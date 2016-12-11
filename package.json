@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "greek-mythology-data": "^0.0.2",
     "path": "^0.12.7"
   }
 }
