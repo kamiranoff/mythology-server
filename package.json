@@ -4,13 +4,22 @@
   "description": "mythology server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node --presets=/*a*/",
+    "start": "nodemon index.js --exec babel-node --presets es2015,stage-2"
   },
   "author": "Kevin Amiranoff",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "greek-mythology-data": "^0.0.5",
+    "greek-mythology-data": "^0.1.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0"
   }
 }
