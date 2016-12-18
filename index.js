@@ -9,18 +9,29 @@ gods = gods.sortByName();
 var allGreeks = new GreekMyth.Greeks(GreekMyth.all);
 allGreeks = allGreeks.sortByName();
 
-app.get('/api/people',function(req,res){
-  res.send(allGreeks);
-  //assuming your app.js and json file are at same level.
-  //You may change this to 'lib/notes/foo.json' to fit you case
+function filteredGreeks(search) {
+  var filteredGreeks = [];
+
+  filteredGreeks = allGreeks.filter(function(el) {
+    var name = el.name.toUpperCase().trim();
+    var searchTerm = search.toUpperCase().trim();
+    return  (name.indexOf(searchTerm) !== -1);
+  });
+  return filteredGreeks;
+}
+
+app.get('/api/people', function(req, res) {
+  if (req.query.search) {
+    res.send(filteredGreeks(req.query.search))
+  } else {
+    res.send(allGreeks);
+  }
 });
 
-app.get('/api/gods',function(req,res){
+app.get('/api/gods', function(req, res) {
   res.send(gods);
-  //assuming your app.js and json file are at same level.
-  //You may change this to 'lib/notes/foo.json' to fit you case
 });
 
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log('Example app listening on port 3000!')
 });
