@@ -18,7 +18,9 @@ const _mythologySchema = {
     spouses: { type: Array },
     lovers: { type: Array },
     children: { type: Array },
-  }
+  },
+  books: { type: Array },
+  events: { type: Array },
 
 };
 

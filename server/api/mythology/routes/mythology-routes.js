@@ -5,5 +5,9 @@ export default class MythologyRoutes {
     router
       .route('/api/all')
       .get(MythologyController.getAll);
+
+    router
+      .route('/api/books')
+      .get(MythologyController.getBooks)
   }
 }
