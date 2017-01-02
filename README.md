@@ -3,3 +3,5 @@
 [![Coverage Status](https://coveralls.io/repos/kamiranoff/mythology-server/badge.svg?branch=master)](https://coveralls.io/r/kamiranoff/mythology-server/?branch=master)
 
 Made for https://github.com/kamiranoff/mythology
+
+Server side based on https://github.com/ericmdantas/generator-ng-fullstack
