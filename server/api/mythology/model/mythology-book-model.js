@@ -7,7 +7,12 @@ const _mythologyBookSchema = {
   excerpt: { type: String },
   rating: { type: Number },
   link: { type: String },
-  fullText: {type: String},
+  fullText: { type: String },
+  images: {
+    thumbnail: { type: String },
+    regular: { type: String },
+  },
+  quotes: { type: Array },
 };
 
 export default mongoose.Schema(_mythologyBookSchema);

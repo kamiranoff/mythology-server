@@ -9,7 +9,7 @@ const _mythologySchema = {
   immortal: { type: String },
   gender: { type: String },
   images: {
-    thumbmail: { type: String },
+    thumbnail: { type: String },
     regular: { type: String }
   },
   relatives: {
