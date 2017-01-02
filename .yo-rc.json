@@ -1,0 +1,11 @@
+{
+  "generator-ng-fullstack": {
+    "username": "kamiranoff",
+    "appName": "mythology-server",
+    "stack": "server",
+    "server": "node",
+    "client": "",
+    "transpilerServer": "babel",
+    "secure": false
+  }
+}
