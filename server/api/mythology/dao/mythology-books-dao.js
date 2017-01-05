@@ -4,7 +4,6 @@ import mythologyBookSchema from '../model/mythology-book-model';
 mythologyBookSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
     var _query = '';
-
     Book
       .find(_query)
       .sort({ name: 1 })
@@ -14,7 +13,6 @@ mythologyBookSchema.statics.getAll = () => {
       });
   });
 };
-
 
 var Book = mongoose.model('Book', mythologyBookSchema, 'books');
 

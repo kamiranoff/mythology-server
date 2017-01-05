@@ -12,7 +12,6 @@ const _mythologyBookSchema = {
     thumbnail: { type: String },
     regular: { type: String },
   },
-  quotes: { type: Array },
 };
 
 export default mongoose.Schema(_mythologyBookSchema);
