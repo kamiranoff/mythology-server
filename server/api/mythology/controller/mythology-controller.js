@@ -24,6 +24,13 @@ export default class MythologyController {
       .catch(error => res.status(400).json(error));
   }
 
+  static getQuotes(req, res) {
+    MythologyQuotesDAO
+      .getAll()
+      .then(quote => res.status(200).json(quote))
+      .catch(error => res.status(400).json(error));
+  }
+
   static getRandomQuote(req, res) {
     MythologyQuotesDAO
       .getRandomQuote()

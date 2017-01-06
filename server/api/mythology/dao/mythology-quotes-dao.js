@@ -19,6 +19,18 @@ mythologyQuoteSchema.statics.getRandomQuote = () => {
   });
 };
 
+mythologyQuoteSchema.statics.getAll = () => {
+  return new Promise((resolve, reject) => {
+    var _query = '';
+    Quote
+      .find(_query)
+      .exec((err, books) => {
+        err ? reject(err)
+          : resolve(books);
+      });
+  });
+};
+
 
 var Quote = mongoose.model('Quote', mythologyQuoteSchema, 'quotes');
 

@@ -10,9 +10,14 @@ export default class MythologyRoutes {
       .route('/api/books')
       .get(MythologyController.getBooks);
 
+
+    router
+      .route('/api/quotes')
+      .get(MythologyController.getQuotes);
+
     router
       .route('/api/quotes/random')
-      .get(MythologyController.getRandomQuote)
+      .get(MythologyController.getRandomQuote);
 
   }
 }
