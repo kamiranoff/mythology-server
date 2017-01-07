@@ -1,6 +1,36 @@
 import mongoose from 'mongoose';
 import Promise from 'bluebird';
+import _ from 'lodash';
+
 import mythologyQuoteSchema from '../model/mythology-quote-model';
+
+mythologyQuoteSchema.statics.getAll = () => {
+  return new Promise((resolve, reject) => {
+    var _query = '';
+    Quote
+      .find(_query)
+      .exec((err, books) => {
+        err ? reject(err)
+          : resolve(books);
+      });
+  });
+};
+
+mythologyQuoteSchema.statics.getAllInRandomOrder = (random) => {
+  if (!_.isString(random)) {
+    return reject(new TypeError('is not a valid string.'));
+  }
+  return new Promise((resolve, reject) => {
+    var _query = '';
+    Quote
+      .find(_query)
+      .exec((err, books) => {
+        err ? reject(err)
+          : resolve(books);
+      });
+  });
+};
+
 
 mythologyQuoteSchema.statics.getRandomQuote = () => {
   return new Promise((resolve, reject) => {
@@ -18,19 +48,6 @@ mythologyQuoteSchema.statics.getRandomQuote = () => {
     });
   });
 };
-
-mythologyQuoteSchema.statics.getAll = () => {
-  return new Promise((resolve, reject) => {
-    var _query = '';
-    Quote
-      .find(_query)
-      .exec((err, books) => {
-        err ? reject(err)
-          : resolve(books);
-      });
-  });
-};
-
 
 var Quote = mongoose.model('Quote', mythologyQuoteSchema, 'quotes');
 

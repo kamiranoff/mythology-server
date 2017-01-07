@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import Promise from 'bluebird';
-import mythologySchema from '../model/mythology-model';
+import mythologyFigureSchema from '../model/mythology-figure-model';
 import _ from 'lodash';
-mythologySchema.statics.getAll = () => {
+
+mythologyFigureSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
     var _query = '';
 
@@ -16,7 +17,7 @@ mythologySchema.statics.getAll = () => {
   });
 };
 
-mythologySchema.statics.getFilteredList = (search) => {
+mythologyFigureSchema.statics.getFilteredList = (search) => {
   return new Promise((resolve, reject) => {
     if (!_.isString(search)) {
       return reject(new TypeError('is not a valid string.'));
@@ -32,6 +33,6 @@ mythologySchema.statics.getFilteredList = (search) => {
   });
 };
 
-var Greek = mongoose.model('Greek', mythologySchema, 'allfigures');
+var Greek = mongoose.model('Greek', mythologyFigureSchema, 'allfigures');
 
 export default Greek;

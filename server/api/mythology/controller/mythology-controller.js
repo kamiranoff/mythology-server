@@ -1,16 +1,18 @@
-import MythologyDAO from '../dao/mythology-dao';
+import MythologyFiguresDAO from '../dao/mythology-figures-dao';
 import MythologyBooksDAO from '../dao/mythology-books-dao';
 import MythologyQuotesDAO from '../dao/mythology-quotes-dao';
 
+import Helpers from '../../../helpers/Helpers';
+
 export default class MythologyController {
-  static getAll(req, res) {
+  static getFigures(req, res) {
     if (req.query.search) {
-      MythologyDAO
+      MythologyFiguresDAO
         .getFilteredList(req.query.search)
         .then(greeks => res.status(200).json(greeks))
         .catch(error => res.status(400).json(error));
     } else {
-      MythologyDAO
+      MythologyFiguresDAO
         .getAll()
         .then(greeks => res.status(200).json(greeks))
         .catch(error => res.status(400).json(error));
@@ -25,10 +27,20 @@ export default class MythologyController {
   }
 
   static getQuotes(req, res) {
-    MythologyQuotesDAO
-      .getAll()
-      .then(quote => res.status(200).json(quote))
-      .catch(error => res.status(400).json(error));
+    if (req.query.random) {
+      MythologyQuotesDAO
+        .getAllInRandomOrder(req.query.random)
+        .then(quotes => {
+          const quotesRandomOrder = Helpers.shuffle(quotes);
+          return res.status(200).json(quotesRandomOrder)
+        })
+        .catch(error => res.status(400).json(error));
+    } else {
+      MythologyQuotesDAO
+        .getAll()
+        .then(quotes => res.status(200).json(quotes))
+        .catch(error => res.status(400).json(error));
+    }
   }
 
   static getRandomQuote(req, res) {
