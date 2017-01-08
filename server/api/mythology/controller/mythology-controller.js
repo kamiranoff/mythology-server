@@ -3,7 +3,6 @@ import MythologyBooksDAO from '../dao/mythology-books-dao';
 import MythologyQuotesDAO from '../dao/mythology-quotes-dao';
 
 import Helpers from '../../../helpers/Helpers';
-
 export default class MythologyController {
   static getFigures(req, res) {
     if (req.query.search) {
@@ -27,7 +26,7 @@ export default class MythologyController {
   }
 
   static getQuotes(req, res) {
-    if (req.query.random) {
+    if (req.query.random === 'true') {
       MythologyQuotesDAO
         .getAllInRandomOrder(req.query.random)
         .then(quotes => {
