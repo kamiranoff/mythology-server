@@ -172,7 +172,21 @@ export default class MythologyRoutes {
       .route('/api/quotes')
       .get(MythologyController.getQuotes);
 
-
+    /**
+     * @swagger
+     * /api/quotes/random:
+     *   get:
+     *     tags:
+     *       - Greek mythological Quotes
+     *     description: Fetch one random mythological quote
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: One random mythological quote
+     *         schema:
+     *           $ref: '#/definitions/Quote'
+     */
     router
       .route('/api/quotes/random')
       .get(MythologyController.getRandomQuote);
