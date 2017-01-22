@@ -1,4 +1,4 @@
-import Todo from '../../../server/api/todo/dao/todo-dao';
+import Todo from '../../../server/api/old.todo/dao/todo-dao';
 import dbJson from './db.json';
 
 exports.setupMongoose = (mongoose) => {
