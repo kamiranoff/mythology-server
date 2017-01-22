@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Promise from 'bluebird';
 import _ from 'lodash';
 
 import mythologyQuoteSchema from '../model/mythology-quote-model';

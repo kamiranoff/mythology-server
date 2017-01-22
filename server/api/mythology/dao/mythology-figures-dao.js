@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Promise from 'bluebird';
 import mythologyFigureSchema from '../model/mythology-figure-model';
 import _ from 'lodash';
 

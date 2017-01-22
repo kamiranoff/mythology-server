@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import Promise from 'bluebird';
 import mythologyBookSchema from '../model/mythology-book-model';
+
 mythologyBookSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
     var _query = '';
