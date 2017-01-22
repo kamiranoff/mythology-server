@@ -9,12 +9,12 @@ import http from 'http';
 import RoutesConfig from './config/routes.conf';
 import DBConfig from './config/db.conf';
 import Routes from './routes/index';
-
 const app = express();
 
+
+// SWAGGER
 const swaggerUi = require('swagger-ui-express');
 var swaggerJSDoc = require('swagger-jsdoc');
-
 var options = {
   swaggerDefinition: {
     info: {
@@ -28,6 +28,8 @@ var options = {
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
 const swaggerSpec = swaggerJSDoc(options);
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec, true));
+// END SWAGGER
+
 
 
 

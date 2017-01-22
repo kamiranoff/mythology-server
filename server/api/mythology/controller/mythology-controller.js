@@ -3,6 +3,7 @@ import MythologyBooksDAO from '../dao/mythology-books-dao';
 import MythologyQuotesDAO from '../dao/mythology-quotes-dao';
 
 import Helpers from '../../../helpers/Helpers';
+
 export default class MythologyController {
   static getFigures(req, res) {
     if (req.query.search) {
@@ -48,4 +49,5 @@ export default class MythologyController {
       .then(quote => res.status(200).json(quote))
       .catch(error => res.status(400).json(error));
   }
+
 };

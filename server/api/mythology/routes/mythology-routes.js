@@ -1,5 +1,5 @@
 import MythologyController from '../controller/mythology-controller';
-
+import UserController from '../controller/user-controller';
 /**
  * @swagger
  * resourcePath: /api
@@ -98,6 +98,17 @@ import MythologyController from '../controller/mythology-controller';
  *       rating:
  *         type: number
  *
+ *   User:
+ *     properties:
+ *       _id:
+ *         type: string
+ *       email:
+ *         type: string
+ *       token:
+ *         type: array
+ *         items:
+ *            type: string
+ *
  */
 
 export default class MythologyRoutes {
@@ -190,5 +201,46 @@ export default class MythologyRoutes {
     router
       .route('/api/quotes/random')
       .get(MythologyController.getRandomQuote);
+
+    /**
+     * @swagger
+     * /api/users/signUp:
+     *   post:
+     *     tags:
+     *       - Users
+     *     description: Sign up a new user
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: send back new the user.
+     *         schema:
+     *           $ref: '#/definitions/User'
+     */
+    router
+      .route('/api/users/signup')
+      .post(UserController.signUp);
+
+    /**
+     * @swagger
+     * /api/users/signin:
+     *   post:
+     *     tags:
+     *       - Users
+     *     description: Sign in a existing user
+     *     consumes:
+     *       - application/json
+     *     produces:
+     *       - application/json
+     *     responses:
+     *       200:
+     *         description: send back new the user.
+     *         schema:
+     *           $ref: '#/definitions/User'
+     */
+    router
+      .route('/api/users/signin')
+      .post(UserController.signIn);
+
   }
 }
