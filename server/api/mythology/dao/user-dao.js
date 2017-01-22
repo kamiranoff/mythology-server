@@ -7,7 +7,7 @@ import userSchema from '../model/user-model';
 
 import secret from '../../../constants/secret.json';
 
-userSchema.methods.handleError = function() {
+userSchema.methods.handleError = function(e) {
 
 };
 
@@ -40,6 +40,12 @@ userSchema.statics.findByToken = function(token) {
     '_id': decoded._id,
     'tokens.token': token,
     'tokens.access': 'auth'
+  }).then(user => {
+    const curatedUser = _.pick(user, ['_id', 'email']);
+    return {
+      curatedUser,
+      token
+    };
   });
 };
 
