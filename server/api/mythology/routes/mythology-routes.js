@@ -121,7 +121,7 @@ export default class MythologyRoutes {
      *   get:
      *     tags:
      *       - Greek Mythological Figures
-     *     description: get all mythological figures or pass a name as parameter a filtered list
+     *     description: get all mythological figures or pass a name as parameter a filtered list. So far we are only fetching "major olympian, "titan" and "primordial deity"
      *     produces:
      *       - application/json
      *     parameters:
