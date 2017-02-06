@@ -136,7 +136,7 @@ export default class MythologyRoutes {
      *           $ref: '#/definitions/Figure'
      */
     router
-      .route('/api/figures')
+      .route('/api/figures/:id?')
       .get(MythologyController.getFigures);
 
 

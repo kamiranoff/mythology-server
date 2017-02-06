@@ -12,12 +12,39 @@ mythologyFigureSchema.statics.getAll = () => {
     Greek
       .find(_query)
       .sort({ name: 1 })
-      .exec((err, greeks) => {
+      .exec((err, figures) => {
         if (err) {
           console.warn(err);
           reject(err)
         } else {
-          resolve(greeks);
+          resolve(figures);
+        }
+      });
+  });
+};
+
+mythologyFigureSchema.statics.getSingle = (id) => {
+  return new Promise((resolve, reject) => {
+    if (!_.isString(id)) {
+      return reject(new TypeError('is not a valid string.'));
+    }
+    //const _query = {};
+    const _query = {
+      category: { $in: TEMP_CATEGORIES },
+      '$and': [{
+        "_id": id,
+      }]
+    };
+
+    Greek
+      .findOne(_query)
+      .sort({ name: 1 })
+      .exec((err, figure) => {
+        if (err) {
+          console.warn(err);
+          reject(err)
+        } else {
+          resolve(figure);
         }
       });
   });
@@ -28,20 +55,6 @@ mythologyFigureSchema.statics.getFilteredList = (search) => {
     if (!_.isString(search)) {
       return reject(new TypeError('is not a valid string.'));
     }
-    // const _query = {
-    //   '$or': [{
-    //     "name": {
-    //       "$regex": search,
-    //       "$options": "i"
-    //     }
-    //   }, {
-    //     "category": {
-    //       "$regex": search,
-    //       "$options": "i"
-    //     }
-    //   }]
-    // };
-
     const _query = {
       category: {
         $in: TEMP_CATEGORIES
@@ -62,12 +75,12 @@ mythologyFigureSchema.statics.getFilteredList = (search) => {
     Greek
       .find(_query)
       .sort({ name: 1 })
-      .exec((err, greeks) => {
+      .exec((err, figures) => {
         if (err) {
           console.warn(err);
           reject(err)
         } else {
-          resolve(greeks);
+          resolve(figures);
         }
       });
   });
