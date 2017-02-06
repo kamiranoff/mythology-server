@@ -25,8 +25,8 @@ mythologyFigureSchema.statics.getAll = () => {
 
 mythologyFigureSchema.statics.getSingle = (id) => {
   return new Promise((resolve, reject) => {
-    if (!_.isString(id)) {
-      return reject(new TypeError('is not a valid string.'));
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      return reject(new TypeError('is not a valid id.'));
     }
     //const _query = {};
     const _query = {
