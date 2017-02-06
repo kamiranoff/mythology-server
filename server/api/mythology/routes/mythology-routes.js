@@ -121,7 +121,7 @@ export default class MythologyRoutes {
      *   get:
      *     tags:
      *       - Greek Mythological Figures
-     *     description: get all mythological figures or pass a name as parameter a filtered list. So far we are only fetching "major olympian, "titan" and "primordial deity"
+     *     description: get all mythological figures or pass a name as parameter a filtered list. Right now we are only fetching "major olympian, "titan" and "primordial deity"
      *     produces:
      *       - application/json
      *     parameters:
@@ -129,9 +129,29 @@ export default class MythologyRoutes {
      *         in: query
      *         description: "Optional name to search through list"
      *         type: string
+     *         required: false
      *     responses:
      *       200:
-     *         description: list of all mythological figures
+     *         description: list of all mythological figures or one if id is in route
+     *         schema:
+     *           $ref: '#/definitions/Figure'
+     *
+     *
+     * /api/figures/{id}:
+     *   get:
+     *     tags:
+     *       - Greek Mythological Figures
+     *     description: get one mythological figure. Right now we are only fetching "major olympian, "titan" and "primordial deity""
+     *     produces:
+     *       - application/json
+     *     parameters:
+     *       - name: id
+     *         in: path
+     *         description: "Optional id to return one figure"
+     *         type: string
+     *     responses:
+     *       200:
+     *         description: one mythological figure
      *         schema:
      *           $ref: '#/definitions/Figure'
      */
