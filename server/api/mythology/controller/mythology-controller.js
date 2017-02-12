@@ -24,6 +24,16 @@ export default class MythologyController {
     }
   }
 
+  static patchFigure(req, res) {
+    if(req.params.id) {
+      MythologyFiguresDAO
+        .patchFigure(req.params.id, req.body)
+        .then(figure => res.status(200).json(figure))
+        .catch(error => res.status(400).json(error));
+    }
+  }
+
+
   static getBooks(req, res) {
     MythologyBooksDAO
       .getAll()

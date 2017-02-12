@@ -157,7 +157,8 @@ export default class MythologyRoutes {
      */
     router
       .route('/api/figures/:id?')
-      .get(MythologyController.getFigures);
+      .get(MythologyController.getFigures)
+      .patch(MythologyController.patchFigure);
 
 
     /**

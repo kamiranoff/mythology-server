@@ -50,6 +50,38 @@ mythologyFigureSchema.statics.getSingle = (id) => {
   });
 };
 
+mythologyFigureSchema.statics.patchFigure = (id, body) => {
+  return new Promise((resolve, reject) => {
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+      return reject(new TypeError('is not a valid id.'));
+    }
+
+
+    const _query = {
+      category: { $in: TEMP_CATEGORIES },
+      '$and': [{
+        "_id": id,
+      }]
+    };
+
+    const options = {
+      new: true,
+    };
+
+    Greek
+      .findOneAndUpdate(_query, body, options)
+      .sort({ name: 1 })
+      .exec((err, figure) => {
+        if (err) {
+          console.warn(err);
+          reject(err)
+        } else {
+          resolve(figure);
+        }
+      });
+  });
+};
+
 mythologyFigureSchema.statics.getFilteredList = (search) => {
   return new Promise((resolve, reject) => {
     if (!_.isString(search)) {
