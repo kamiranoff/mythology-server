@@ -21,8 +21,9 @@ var options = {
       title: 'Greek Mythology Api', // Title (required)
       version: '1.0.0', // Version (required)
     },
+    basePath: '/api'
   },
-  apis: [__dirname + '/api/mythology/routes/mythology-routes.js'], // Path to the API docs
+  apis: [__dirname + '/api/mythology/mythology-swagger.yaml'], // Path to the API docs
 };
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
