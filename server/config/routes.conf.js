@@ -1,11 +1,9 @@
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import contentLength from 'express-content-length-validator';
 import helmet from 'helmet';
 import express from 'express';
 import compression from 'compression';
 import zlib from 'zlib';
-import logger from 'morgan';
 import expressWinston from 'express-winston';
 import winstonInstance from './winston';
 
