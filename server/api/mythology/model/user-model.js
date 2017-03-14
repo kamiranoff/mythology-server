@@ -27,7 +27,8 @@ const _UserSchema = {
       type: String,
       required: true,
     },
-  }]
+  }],
+  quotes: {type: Array},
 };
 
 export default mongoose.Schema(_UserSchema);

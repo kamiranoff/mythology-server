@@ -41,7 +41,7 @@ userSchema.statics.findByToken = function(token) {
     'tokens.token': token,
     'tokens.access': 'auth'
   }).then(user => {
-    const curatedUser = _.pick(user, ['_id', 'email']);
+    const curatedUser = _.pick(user, ['_id', 'email', 'quotes']);
     return {
       curatedUser,
       token

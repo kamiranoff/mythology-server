@@ -56,7 +56,6 @@ mythologyFigureSchema.statics.patchFigure = (id, body) => {
       return reject(new TypeError('is not a valid id.'));
     }
 
-
     const _query = {
       category: { $in: TEMP_CATEGORIES },
       '$and': [{
@@ -68,7 +67,7 @@ mythologyFigureSchema.statics.patchFigure = (id, body) => {
       new: true,
     };
 
-    Greek
+    Greek.find(_query)
       .findOneAndUpdate(_query, body, options)
       .sort({ name: 1 })
       .exec((err, figure) => {

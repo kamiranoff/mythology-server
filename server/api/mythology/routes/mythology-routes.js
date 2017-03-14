@@ -13,8 +13,9 @@ export default class MythologyRoutes {
       .get(MythologyController.getBooks);
 
     router
-      .route('/api/quotes')
-      .get(MythologyController.getQuotes);
+      .route('/api/quotes/:id?')
+      .get(MythologyController.getQuotes)
+      .patch(MythologyController.updateQuote);
 
     router
       .route('/api/quotes/random')

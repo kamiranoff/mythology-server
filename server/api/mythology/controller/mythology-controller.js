@@ -65,4 +65,13 @@ export default class MythologyController {
       .catch(error => res.status(400).json(error));
   }
 
+  static updateQuote(req, res) {
+    if (req.params.id) {
+      MythologyQuotesDAO
+        .updateQuote(req.params.id, req.body)
+        .then(quote => res.status(200).json(quote))
+        .catch(error => res.status(400).json(error));
+    }
+  }
+
 };

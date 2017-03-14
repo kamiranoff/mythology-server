@@ -48,6 +48,26 @@ mythologyQuoteSchema.statics.getRandomQuote = () => {
   });
 };
 
+mythologyQuoteSchema.statics.updateQuote = (id, body) => {
+  console.log(id, body);
+  if(!id || !body.likes) {
+    throw new Error('either no id or no likes');
+  }
+
+  return new Promise((resolve, reject) => {
+    Quote
+      .findOneAndUpdate(id, body, options)
+      .exec((err, quote) => {
+        if (err) {
+          console.warn(err);
+          reject(err)
+        } else {
+          resolve(quote);
+        }
+      });
+  });
+}
+
 var Quote = mongoose.model('Quote', mythologyQuoteSchema, 'quotes');
 
 export default Quote;
