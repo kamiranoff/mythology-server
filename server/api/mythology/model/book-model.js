@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const _mythologyBookSchema = {
+const _BookSchema = {
   title: { type: String },
   author: { type: String },
   description: { type: String },
@@ -14,4 +14,4 @@ const _mythologyBookSchema = {
   },
 };
 
-export default mongoose.Schema(_mythologyBookSchema);
+export default mongoose.Schema(_BookSchema);

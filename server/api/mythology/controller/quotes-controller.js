@@ -1,4 +1,4 @@
-import MythologyQuotesDAO from '../dao/mythology-quotes-dao';
+import MythologyQuotesDAO from '../dao/quotes-dao';
 
 import Helpers from '../../../helpers/Helpers';
 

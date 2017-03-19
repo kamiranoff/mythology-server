@@ -1,4 +1,4 @@
-import MythologyFiguresDAO from '../dao/mythology-figures-dao';
+import MythologyFiguresDAO from '../dao/figures-dao';
 
 class FiguresController {
   static getFigures(req, res) {

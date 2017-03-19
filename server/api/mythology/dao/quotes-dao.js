@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import _ from 'lodash';
 
-import mythologyQuoteSchema from '../model/mythology-quote-model';
+import QuoteSchema from '../model/quote-model';
 
-mythologyQuoteSchema.statics.getAll = () => {
+QuoteSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
-    var _query = '';
+    const _query = '';
     Quote
       .find(_query)
       .exec((err, books) => {
@@ -15,12 +15,12 @@ mythologyQuoteSchema.statics.getAll = () => {
   });
 };
 
-mythologyQuoteSchema.statics.getAllInRandomOrder = (random) => {
+QuoteSchema.statics.getAllInRandomOrder = (random) => {
   if (!_.isString(random)) {
     return reject(new TypeError('is not a valid string.'));
   }
   return new Promise((resolve, reject) => {
-    var _query = '';
+    const _query = '';
     Quote
       .find(_query)
       .exec((err, books) => {
@@ -31,7 +31,7 @@ mythologyQuoteSchema.statics.getAllInRandomOrder = (random) => {
 };
 
 
-mythologyQuoteSchema.statics.getRandomQuote = () => {
+QuoteSchema.statics.getRandomQuote = () => {
   return new Promise((resolve, reject) => {
     Quote.count().exec((err, count) => {
       const random = Math.floor(Math.random() * count);
@@ -48,7 +48,7 @@ mythologyQuoteSchema.statics.getRandomQuote = () => {
   });
 };
 
-mythologyQuoteSchema.statics.updateQuote = (id, body) => {
+QuoteSchema.statics.updateQuote = (id, body) => {
   console.log(id, body);
   if(!id || !body.likes) {
     throw new Error('either no id or no likes');
@@ -68,6 +68,6 @@ mythologyQuoteSchema.statics.updateQuote = (id, body) => {
   });
 }
 
-var Quote = mongoose.model('Quote', mythologyQuoteSchema, 'quotes');
+const Quote = mongoose.model('Quote', QuoteSchema, 'quotes');
 
 export default Quote;

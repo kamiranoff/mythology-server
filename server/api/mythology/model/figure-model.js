@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const _mythologyFigureSchema = {
+const _FigureSchema = {
   name: { type: String },
   greekName: { type: String },
   romanName: { type: String },
@@ -24,4 +24,4 @@ const _mythologyFigureSchema = {
 
 };
 
-export default mongoose.Schema(_mythologyFigureSchema);
+export default mongoose.Schema(_FigureSchema);

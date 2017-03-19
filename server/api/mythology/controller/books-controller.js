@@ -1,4 +1,4 @@
-import MythologyBooksDAO from '../dao/mythology-books-dao';
+import MythologyBooksDAO from '../dao/books-dao';
 
 class BooksController {
 

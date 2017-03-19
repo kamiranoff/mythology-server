@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import mythologyBookSchema from '../model/mythology-book-model';
+import BookSchema from '../model/book-model';
 
-mythologyBookSchema.statics.getAll = () => {
+BookSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
-    var _query = '';
+    const _query = '';
     Book
       .find(_query)
       .sort({ name: 1 })
@@ -14,6 +14,6 @@ mythologyBookSchema.statics.getAll = () => {
   });
 };
 
-var Book = mongoose.model('Book', mythologyBookSchema, 'books');
+const Book = mongoose.model('Book', BookSchema, 'books');
 
 export default Book;

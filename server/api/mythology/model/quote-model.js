@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const _mythologyQuoteSchema = {
+const _QuoteSchema = {
   quote: { type: String },
   note: { type: String },
   book: { type: String },
@@ -9,4 +9,4 @@ const _mythologyQuoteSchema = {
   liked: { type: Boolean}
 };
 
-export default mongoose.Schema(_mythologyQuoteSchema);
+export default mongoose.Schema(_QuoteSchema);

@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
-import mythologyFigureSchema from '../model/mythology-figure-model';
+import FigureSchema from '../model/figure-model';
 import _ from 'lodash';
 
 const TEMP_CATEGORIES = ["major olympian", "twelve titan", "primordial deity"];
 
-mythologyFigureSchema.statics.getAll = () => {
+FigureSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
     //const _query = {};
     const _query = { category: { $in: TEMP_CATEGORIES } };
 
-    Greek
+    Figure
       .find(_query)
       .sort({ name: 1 })
       .exec((err, figures) => {
@@ -23,7 +23,7 @@ mythologyFigureSchema.statics.getAll = () => {
   });
 };
 
-mythologyFigureSchema.statics.getSingle = (id) => {
+FigureSchema.statics.getSingle = (id) => {
   return new Promise((resolve, reject) => {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
       return reject(new TypeError('is not a valid id.'));
@@ -36,7 +36,7 @@ mythologyFigureSchema.statics.getSingle = (id) => {
       }]
     };
 
-    Greek
+    Figure
       .findOne(_query)
       .sort({ name: 1 })
       .exec((err, figure) => {
@@ -50,7 +50,7 @@ mythologyFigureSchema.statics.getSingle = (id) => {
   });
 };
 
-mythologyFigureSchema.statics.patchFigure = (id, body) => {
+FigureSchema.statics.patchFigure = (id, body) => {
   return new Promise((resolve, reject) => {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
       return reject(new TypeError('is not a valid id.'));
@@ -67,7 +67,7 @@ mythologyFigureSchema.statics.patchFigure = (id, body) => {
       new: true,
     };
 
-    Greek.find(_query)
+    Figure.find(_query)
       .findOneAndUpdate(_query, body, options)
       .sort({ name: 1 })
       .exec((err, figure) => {
@@ -81,7 +81,7 @@ mythologyFigureSchema.statics.patchFigure = (id, body) => {
   });
 };
 
-mythologyFigureSchema.statics.getFilteredList = (search) => {
+FigureSchema.statics.getFilteredList = (search) => {
   return new Promise((resolve, reject) => {
     if (!_.isString(search)) {
       return reject(new TypeError('is not a valid string.'));
@@ -103,7 +103,7 @@ mythologyFigureSchema.statics.getFilteredList = (search) => {
       }]
     };
 
-    Greek
+    Figure
       .find(_query)
       .sort({ name: 1 })
       .exec((err, figures) => {
@@ -117,6 +117,6 @@ mythologyFigureSchema.statics.getFilteredList = (search) => {
   });
 };
 
-var Greek = mongoose.model('Greek', mythologyFigureSchema, 'allfigures');
+const Figure = mongoose.model('Figure', FigureSchema, 'allfigures');
 
-export default Greek;
+export default Figure;
