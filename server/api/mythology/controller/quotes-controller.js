@@ -33,7 +33,10 @@ class QuotesController {
       MythologyQuotesDAO
         .updateQuote(req.params.id, req.body)
         .then(quote => res.status(200).json(quote))
-        .catch(error => res.status(400).json(error));
+        .catch(error => {
+          console.log(error);
+          return res.status(400).json(error);
+        });
     }
   }
 };
