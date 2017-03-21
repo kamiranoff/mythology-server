@@ -6,11 +6,15 @@ const PORT = process.env.PORT || 3333;
 import os from 'os';
 import express from 'express';
 import http from 'http';
+import cors from 'cors';
 import RoutesConfig from './config/routes.conf';
 import DBConfig from './config/db.conf';
 import Routes from './routes/index';
 const app = express();
 
+if(process.env.NODE_ENV !== 'PRODUCTION') {
+  app.use(cors());
+}
 
 // SWAGGER
 const swaggerUi = require('swagger-ui-express');
@@ -30,10 +34,6 @@ var options = {
 const swaggerSpec = swaggerJSDoc(options);
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec, true));
 // END SWAGGER
-
-
-
-
 
 RoutesConfig.init(app);
 DBConfig.init();
