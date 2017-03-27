@@ -2,15 +2,27 @@ import mongoose from 'mongoose';
 // Use native promises
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
+import bcrypt from 'bcryptjs';
 
 import userSchema from '../model/user-model';
 
 import { secret } from '../../../constants/secret.json';
 
+userSchema.pre('save', function(next) {
+  const user = this;
+  if(user.isModified('password')) {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        user.password = hash;
+      });
+    });
+    next();
+  } else {
+    const err = new Error('Could not hash the password');
+    next(err);
+  }
 
-// @FIXME: implement
-userSchema.methods.handleError = function(e) {
-};
+});
 
 // Using regular function to bind this.
 userSchema.methods.generateAuthToken = function() {
@@ -74,12 +86,6 @@ userSchema.statics.signUp = (body) => {
 userSchema.statics.me = (user) => {
   return new Promise.resolve(user);
 }
-
-
-// @FIXME: implement
-userSchema.statics.findByUsernameAndPassword = (user) => {
-
-};
 
 
 const User = mongoose.model('User', userSchema, 'users');
