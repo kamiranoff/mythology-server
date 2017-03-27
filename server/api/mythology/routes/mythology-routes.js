@@ -1,7 +1,8 @@
 import FiguresController from '../controller/figures-controller';
-import UserController from '../controller/user-controller';
 import BooksController from '../controller/books-controller';
 import QuotesController from '../controller/quotes-controller';
+import UserMiddleware from '../middleware/UserMiddleware';
+import UserController from '../controller/user-controller';
 
 export default class MythologyRoutes {
   static init(router) {
@@ -24,11 +25,12 @@ export default class MythologyRoutes {
       .get(QuotesController.getRandomQuote);
 
     router
-      .route('/api/users/signup')
+      .route('/api/users')
       .post(UserController.signUp);
 
     router
-      .route('/api/users/signin')
-      .post(UserController.signIn);
+      .route('/api/users/me')
+      .all(UserMiddleware.authenticate)
+      .get(UserController.me);
   }
 }

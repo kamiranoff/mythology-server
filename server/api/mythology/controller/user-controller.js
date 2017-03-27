@@ -1,5 +1,4 @@
 import UserDao from '../dao/user-dao';
-import _ from 'lodash';
 
 export default class UserController {
   static signUp(req, res) {
@@ -16,32 +15,10 @@ export default class UserController {
       });
   }
 
-  static signIn(req, res) {
-    if (req.body.token) {
+  static me(req, res) {
       UserDao
-        .findByToken(req.body.token)
-        .then((payload) => {
-          return res
-            .header('x-auth', payload.token)
-            .status(200)
-            .json(payload)
-        })
-        .catch(error => {
-          res.status(400).json({ error: error.message });
-        });
-    } else {
-      // NOT IMPLEMENTED YET !!!
-      UserDao
-        .signIn(req.body)
-        .then((payload) => {
-          return res
-            .header('x-auth', payload.token)
-            .status(200)
-            .json(payload)
-        })
-        .catch(error => {
-          res.status(400).json({ error: error.message });
-        });
-    }
+        .me(req.user)
+        .then(user => res.status(200).json(user))
+        .catch(error => res.status(400).json(error));
   }
 };
