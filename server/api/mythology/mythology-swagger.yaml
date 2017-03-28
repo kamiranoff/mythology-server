@@ -100,6 +100,34 @@ definitions:
         type: array
         items:
            type: string
+  CuratedUser:
+    properties:
+      curatedUser:
+        type: object
+        properties:
+          _id:
+            type: string
+          email:
+            type: string
+      token:
+        type: string
+  CuratedUserWithQuotes:
+    properties:
+      curatedUser:
+        type: object
+        properties:
+          _id:
+            type: string
+          email:
+            type: string
+          quotes:
+            type: array
+            items:
+              type: string
+
+      token:
+        type: string
+
 paths:
   /figures:
     get:
@@ -145,8 +173,14 @@ paths:
       parameters:
         - name: id
           in: path
+          required: true
           description: id of figure
           type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Figure'
       responses:
         200:
           description: the updated mythological figure
@@ -193,18 +227,49 @@ paths:
           description: One random mythological quote
           schema:
             $ref: '#/definitions/Quote'
-  /users/signUp:
-    post:
+  /users/me:
+    get:
       tags:
         - Users
-      description: Sign up a new user
+      description: The current signed in user
+      parameters:
+        - name: x-auth
+          in: header
+          required: true
+          description: required token to get the user current user
+          type: string
       produces:
         - application/json
       responses:
         200:
           description: send back new the user.
           schema:
-            $ref: '#/definitions/User'
+            $ref: '#/definitions/CuratedUserWithQuotes'
+  /users:
+    post:
+      consumes:
+        - application/json
+      tags:
+        - Users
+      description: Sign up a new user
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: send back the new user.
+          schema:
+            $ref: '#/definitions/CuratedUser'
   /users/signin:
     post:
       tags:
