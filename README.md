@@ -10,5 +10,5 @@ Server side based on https://github.com/ericmdantas/generator-ng-fullstack
 
 
 # @TODO
-1- use dotenv
+1- use dotenv  
 2- finish login system
