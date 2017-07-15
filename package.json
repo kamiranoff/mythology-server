@@ -4,7 +4,7 @@
   "main": "src/mythology-server.js",
   "scripts": {
     "start": "nodemon index.js --exec babel-node --presets es2015,stage-2",
-    "test":"export NODE_ENV=test && mocha './__test__/*.js' --recursive --check-leaks --reporter min --compilers js:babel-register",
+    "test": "export NODE_ENV=test && mocha './__test__/*.js' --recursive --check-leaks --reporter min --compilers js:babel-register",
     "test-server": "mocha './tests/server/**/*.js' --recursive --check-leaks --reporter min --compilers js:babel-register",
     "coverage-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- 'tests/server/**/*.js' --compilers js:babel-register",
     "coveralls-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- 'tests/server/**/*.js' --compilers js:babel-register --report lcovonly && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
