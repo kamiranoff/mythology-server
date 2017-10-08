@@ -5,6 +5,7 @@ const _FigureSchema = {
   greekName: { type: String },
   romanName: { type: String },
   category: { type: String },
+  shortDescription: { type: String },
   description: { type: String },
   immortal: { type: String },
   gender: { type: String },
