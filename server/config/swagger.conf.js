@@ -12,7 +12,7 @@ export default class SwaggerConfig {
         },
         basePath: '/api'
       },
-      apis: [__dirname + '/api/mythology/mythology-swagger.yaml'], // Path to the API docs
+      apis: [__dirname + '/../api/mythology/mythology-swagger.yml'], // Path to the API docs
     };
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
