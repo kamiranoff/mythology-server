@@ -1,0 +1,19 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "zeus",
+  "password": "zeus-db-pass",
+  "database": "greek_mythology",
+  "entities": [
+    "dist/**/*.entity.js"
+  ],
+  "migrationsTableName": "migration",
+  "migrations": [
+    "dist/migration/**/*.js"
+  ],
+  "cli": {
+    "migrationsDir": "src/migration"
+  },
+  "ssl": false
+}

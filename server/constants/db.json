@@ -1,4 +1,0 @@
-{
-  "localhost": "mongodb://127.0.0.1/mythology",
-  "test": "mongodb://127.0.0.1/mythology-test"
-}
